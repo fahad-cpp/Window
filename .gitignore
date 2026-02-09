@@ -1,0 +1,8 @@
+bin
+int
+build
+*.vs
+*.sln
+*.vcxproj
+*.filters
+*.user
