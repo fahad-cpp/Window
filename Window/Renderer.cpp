@@ -100,21 +100,21 @@ Vector transformVertex(Vector vec, const Transform& tf, RotateOrder ro) {
 }
 void Renderer::putPixelD(int x, int y, Colour color) {
 	u32 hexColor = rgbtoHex(color);
-	u32* pixel = (u32*)renderWindow->renderState.screenBuffer + x + (y * renderWindow->renderState.width);
+	u32* pixel = (u32*)renderWindow->getRenderState()->screenBuffer + x + (y * renderWindow->getRenderState()->width);
 	*pixel = hexColor;
 }
 void Renderer::putPixel(int x, int y, Colour color) {
 	u32 hexColor = rgbtoHex(color);
-	x += renderWindow->renderState.width / 2;
-	y = (renderWindow->renderState.height / 2) - y;
-	u32* pixel = (u32*)renderWindow->renderState.screenBuffer + x + (y * renderWindow->renderState.width);
+	x += renderWindow->getRenderState()->width / 2;
+	y = (renderWindow->getRenderState()->height / 2) - y;
+	u32* pixel = (u32*)renderWindow->getRenderState()->screenBuffer + x + (y * renderWindow->getRenderState()->width);
 	*pixel = hexColor;
 }
 void Renderer::clear(u32 color) {
-	u32* buffer = (u32*)renderWindow->renderState.screenBuffer;
-	float* dep = renderWindow->renderState.depthBuffer;
-	for (int y = 0; y < renderWindow->renderState.height; y++) {
-		for (int x = 0; x < renderWindow->renderState.width; x++) {
+	u32* buffer = (u32*)renderWindow->getRenderState()->screenBuffer;
+	float* dep = renderWindow->getRenderState()->depthBuffer;
+	for (int y = 0; y < renderWindow->getRenderState()->height; y++) {
+		for (int x = 0; x < renderWindow->getRenderState()->width; x++) {
 			*buffer++ = color;
 			*dep++ = 0.f;
 		}
@@ -122,10 +122,10 @@ void Renderer::clear(u32 color) {
 }
 void Renderer::clear(Colour color) {
 	u32 hexColor = rgbtoHex(color);
-	u32* buffer = (u32*)renderWindow->renderState.screenBuffer;
-	float* dep = renderWindow->renderState.depthBuffer;
-	for (int y = 0; y < renderWindow->renderState.height; y++) {
-		for (int x = 0; x < renderWindow->renderState.width; x++) {
+	u32* buffer = (u32*)renderWindow->getRenderState()->screenBuffer;
+	float* dep = renderWindow->getRenderState()->depthBuffer;
+	for (int y = 0; y < renderWindow->getRenderState()->height; y++) {
+		for (int x = 0; x < renderWindow->getRenderState()->width; x++) {
 			*buffer++ = hexColor;
 			*dep++ = 0.f;
 		}
@@ -293,10 +293,10 @@ void Renderer::drawTriangle(Triangle& t, bool wireframe)
 			Vector T = canvasToViewport((x * (1 / z)) / d, (y * (1 / z)) / d);
 			T.z = 1 / z;
 			if (isIn(float(x), float(-canvas.x / 2.f), float(canvas.x / 2.f)) && isIn(float(y), float(-canvas.y / 2.f), float(canvas.y / 2.f))) {
-				int nx = int(x + (renderWindow->renderState.width / 2.0));
-				int ny = int((renderWindow->renderState.height / 2.f) - y);
+				int nx = int(x + (renderWindow->getRenderState()->width / 2.0));
+				int ny = int((renderWindow->getRenderState()->height / 2.f) - y);
 				//Pointer to depth buffer
-				float* dep = ((float*)(renderWindow->renderState.depthBuffer)) + (ny * renderWindow->renderState.width) + nx;
+				float* dep = ((float*)(renderWindow->getRenderState()->depthBuffer)) + (ny * renderWindow->getRenderState()->width) + nx;
 				if (z > (*dep)) {
 					//Point in camera space
 					Vector P = T;

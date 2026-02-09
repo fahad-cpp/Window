@@ -2,15 +2,15 @@
 #include "Renderer.h"
 #include "Main.h"
 int main() {
-	Window window("Renderer",900,900);
-	Renderer renderer(&window);
+	Window window("Window",720,720);
+	Renderer renderer(((Window*)(&window)));
 	init();
 	while (window.isOpen()) {
 		renderer.clear(0x000000);
 
 		window.processMessages();
 
-		update(window.input,renderer);
+		update(window.getInput(), renderer);
 
 		window.swapBuffers();
 	}

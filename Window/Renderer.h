@@ -8,14 +8,16 @@ struct Renderer {
 	Transform camera;
 	Vector viewPort;
 	Vector canvas;
+	RenderState* renderState;
 	//distance between camera position and viewport
 	float d;
 	Renderer(Window* window) {
+		renderState = window->getRenderState();
 		renderWindow = window;
 		d = 1.f;
 		camera = { {0,0,-5},1,{0,0,0} };
-		canvas = {(float)window->renderState.width,(float)window->renderState.height};
-		float aspectratio = float(renderWindow->renderState.width) / float(renderWindow->renderState.height);
+		canvas = {(float)renderState->width,(float)renderState->height};
+		float aspectratio = float(renderState->width) / float(renderState->height);
 		viewPort.x = aspectratio;
 		viewPort.y = 1;
 	}
