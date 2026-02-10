@@ -26,12 +26,16 @@ void init() {
 }
 void update(Input* input, Renderer& renderer) {
 	handleInput(*input,renderer);
-	Vector p[3] = { Vector{1.f,2.f,6.f},Vector{ -1.f,2.f,6.f },Vector{0.f,0.f,6.f} };
+	Vector p[3] = {
+		Vector{1.f,2.f,6.f},
+		Vector{-1.f,2.f,6.f },
+		Vector{0.f,0.f,6.f} 
+	};
 	Triangle t(p, Vector{ 0,0,-1 }, Colour{ 255,255,255 }, -1.f, 0.f);
 
 	for (int i = 0; i < 3; i++) {
 		t.p[i] = t.p[i] - renderer.camera.position;
 	}
-	renderer.drawTriangle(t,true);
+	renderer.drawTriangle(t);
 	return;
 }

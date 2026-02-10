@@ -1,5 +1,4 @@
 #pragma once
-#include <Windows.h>
 #include <iostream>
 #include <string>
 #include "Input.h"
@@ -20,8 +19,8 @@ public:
 	virtual void addConsole() const = 0;
 	virtual void removeConsole() const = 0;
 	virtual bool isOpen() const = 0;
-	virtual RenderState* getRenderState() { return  &renderState; }
-	virtual Input* getInput() { return &input; }
+	virtual inline RenderState* getRenderState() { return  &renderState; }
+	virtual inline Input* getInput() { return &input; }
 };
 
 //User interface Class
@@ -31,11 +30,11 @@ private:
 public:
 	Window(const char* name = "NULL", unsigned int width = 720, unsigned int height = 720);
 	~Window();
-	void swapBuffers();
-	void processMessages();
-	void addConsole() const ;
-	void removeConsole() const;
-	bool isOpen() const;
-	RenderState* getRenderState();
-	Input* getInput();
+	inline void swapBuffers() { impl->swapBuffers(); }
+	inline void processMessages() { impl->processMessages(); }
+	inline void addConsole() const { impl->addConsole(); };
+	inline void removeConsole() const { impl->removeConsole(); };
+	inline bool isOpen() const { return impl->isOpen(); };
+	inline RenderState* getRenderState() { return impl->getRenderState(); };
+	inline Input* getInput() { return impl->getInput(); }
 };

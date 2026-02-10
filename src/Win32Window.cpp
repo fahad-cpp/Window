@@ -56,8 +56,14 @@ LRESULT windowProcedure(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) {
 	case WM_CLOSE:
 	case WM_DESTROY: {
 		RenderState* renderStateU = pWindow->getRenderState();
-		if (renderStateU->screenBuffer)VirtualFree(renderStateU->screenBuffer, 0, MEM_RELEASE);
-		if (renderStateU->depthBuffer)VirtualFree(renderStateU->depthBuffer, 0, MEM_RELEASE);
+		if (renderStateU->screenBuffer) {
+			VirtualFree(renderStateU->screenBuffer, 0, MEM_RELEASE);
+			renderStateU->screenBuffer = nullptr;
+		}
+		if (renderStateU->depthBuffer) {
+			VirtualFree(renderStateU->depthBuffer, 0, MEM_RELEASE);
+			renderStateU->depthBuffer = nullptr;
+		}
 		DestroyWindow(window);
 		return result;
 	}break;

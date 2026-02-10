@@ -104,10 +104,12 @@ void Renderer::putPixelD(int x, int y, Colour color) {
 	*pixel = hexColor;
 }
 void Renderer::putPixel(int x, int y, Colour color) {
+	RenderState* _renderState = renderWindow->getRenderState();
 	u32 hexColor = rgbtoHex(color);
-	x += renderWindow->getRenderState()->width / 2;
-	y = (renderWindow->getRenderState()->height / 2) - y;
-	u32* pixel = (u32*)renderWindow->getRenderState()->screenBuffer + x + (y * renderWindow->getRenderState()->width);
+	x += _renderState->width / 2;
+	y = (_renderState->height / 2) - y;
+	if (x < 0 || x > _renderState->width || y < 0 || y > _renderState->height)return;
+	u32* pixel = (u32*)_renderState->screenBuffer + x + (y * _renderState->width);
 	*pixel = hexColor;
 }
 void Renderer::clear(u32 color) {
@@ -296,6 +298,7 @@ void Renderer::drawTriangle(Triangle& t, bool wireframe)
 				int nx = int(x + (renderWindow->getRenderState()->width / 2.0));
 				int ny = int((renderWindow->getRenderState()->height / 2.f) - y);
 				//Pointer to depth buffer
+				if ((!renderWindow->getRenderState()->depthBuffer) || (!renderWindow->getRenderState()->screenBuffer))return;
 				float* dep = ((float*)(renderWindow->getRenderState()->depthBuffer)) + (ny * renderWindow->getRenderState()->width) + nx;
 				if (z > (*dep)) {
 					//Point in camera space
