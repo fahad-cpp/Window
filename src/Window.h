@@ -24,12 +24,12 @@ public:
 };
 
 //User interface Class
-class Window {
+class FSWindow {
 private:
 	BaseWindow* impl;
 public:
-	Window(const char* name = "NULL", unsigned int width = 720, unsigned int height = 720);
-	~Window();
+	FSWindow(const char* name = "NULL", unsigned int width = 720, unsigned int height = 720);
+	~FSWindow();
 	inline void swapBuffers() { impl->swapBuffers(); }
 	inline void processMessages() { impl->processMessages(); }
 	inline void addConsole() const { impl->addConsole(); };

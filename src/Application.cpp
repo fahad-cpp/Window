@@ -2,8 +2,8 @@
 #include "Renderer.h"
 #include "Main.h"
 int main() {
-	Window window("Window",720,720);
-	Renderer renderer(((Window*)(&window)));
+	FSWindow window("Window",720,720);
+	Renderer renderer(((FSWindow*)(&window)));
 	init();
 	while (window.isOpen()) {
 		renderer.clear(0x000000);

@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #include "Win32Window.h"
 LRESULT windowProcedure(HWND window, UINT msg, WPARAM wParam, LPARAM lParam);
 Win32Window::Win32Window(const char* name, unsigned int width, unsigned int height)
@@ -188,3 +189,4 @@ void Win32Window::removeConsole() const {
 	FreeConsole();
 	std::fclose(stdout);
 }
+#endif

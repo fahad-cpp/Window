@@ -1,4 +1,5 @@
 #pragma once
+#ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
 #include "Window.h"
@@ -21,3 +22,4 @@ public:
 	void removeConsole() const override;
 	bool isOpen() const override { return IsWindow(mWindowHandle); }
 };
+#endif

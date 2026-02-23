@@ -4,14 +4,14 @@
 #include "Scene.h"
 //CPU renderer
 struct Renderer {
-	Window* renderWindow;
+	FSWindow* renderWindow;
 	Transform camera;
 	Vector viewPort;
 	Vector canvas;
 	RenderState* renderState;
 	//distance between camera position and viewport
 	float d;
-	Renderer(Window* window) {
+	Renderer(FSWindow* window) {
 		renderState = window->getRenderState();
 		renderWindow = window;
 		d = 1.f;
