@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "FSWindow.h"
 #ifdef _WIN32
 #include "Win32Window.h"
 #elif __linux__

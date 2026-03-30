@@ -1,6 +1,6 @@
 #pragma once
 #include <cmath>
-#include "Window.h"
+#include "FSWindow.h"
 #include "Scene.h"
 //CPU renderer
 struct Renderer {
