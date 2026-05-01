@@ -3,6 +3,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <stdint.h>
+#include "Input.h"
 class XlibWindow : public BaseWindow
 {
 private:

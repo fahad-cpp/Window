@@ -23,7 +23,7 @@ public:
 	virtual inline Input* getInput() { return &input; }
 };
 
-//User interface Class
+//interface Class
 class FSWindow {
 private:
 	BaseWindow* impl;

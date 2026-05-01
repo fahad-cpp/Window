@@ -101,10 +101,6 @@ LRESULT windowProcedure(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) {
 }
 
 void Win32Window::processMessages() {
-	//reset input before processing messages
-	for (int i = 0; i < Buttons::BUTTON_COUNT; i++) {
-		input.buttons->isDown = false;
-	}
 	MSG message;
 	while (PeekMessage(&message, mWindowHandle, 0, 0, PM_REMOVE)) {
 		switch (message.message) {
@@ -130,19 +126,27 @@ input.buttons[b].isDown = isDown;\
 					process_messages(BUTTON_B, 'B')
 					process_messages(BUTTON_C, 'C')
 					process_messages(BUTTON_D, 'D')
+					process_messages(BUTTON_E, 'E')
 					process_messages(BUTTON_F, 'F')
 					process_messages(BUTTON_G, 'G')
+					process_messages(BUTTON_H, 'H')
+					process_messages(BUTTON_I, 'I')
+					process_messages(BUTTON_J, 'J')
+					process_messages(BUTTON_K, 'K')
 					process_messages(BUTTON_L, 'L')
 					process_messages(BUTTON_M, 'M')
 					process_messages(BUTTON_N, 'N')
+					process_messages(BUTTON_O, 'O')
 					process_messages(BUTTON_P, 'P')
 					process_messages(BUTTON_Q, 'Q')
 					process_messages(BUTTON_R, 'R')
 					process_messages(BUTTON_S, 'S')
 					process_messages(BUTTON_T, 'T')
+					process_messages(BUTTON_U, 'U')
 					process_messages(BUTTON_V, 'V')
 					process_messages(BUTTON_W, 'W')
 					process_messages(BUTTON_X, 'X')
+					process_messages(BUTTON_Y, 'Y')
 					process_messages(BUTTON_Z, 'Z')
 			}
 		}break;
