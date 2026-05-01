@@ -1,3 +1,0 @@
-/home/Fahad/Projects/Window/CMakeFiles/Window.dir
-/home/Fahad/Projects/Window/CMakeFiles/edit_cache.dir
-/home/Fahad/Projects/Window/CMakeFiles/rebuild_cache.dir
