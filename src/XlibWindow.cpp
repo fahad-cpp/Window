@@ -38,6 +38,8 @@ XlibWindow::XlibWindow(const char* name, unsigned int width, unsigned int height
 XlibWindow::~XlibWindow(){
     std::cout << "Xlib Window Destroyed\n";
     XDestroyImage(mBackImage);
+    if(renderState.screenBuffer)free(renderState.screenBuffer);
+    if(renderState.depthBuffer)free(renderState.depthBuffer);
     if(isOpen())XDestroyWindow(mDisplay,mWindowHandle);
     XCloseDisplay(mDisplay);
 }
