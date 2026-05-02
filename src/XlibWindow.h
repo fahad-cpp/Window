@@ -23,5 +23,6 @@ public:
 	void addConsole() const override;
 	void removeConsole() const override;
 	bool isOpen() const override { return mWindowHandle; }
+	void close() override { XDestroyWindow(mDisplay,mWindowHandle);mWindowHandle = (Window)NULL; }
 };
 #endif

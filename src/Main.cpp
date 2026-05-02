@@ -19,6 +19,9 @@ static void handleInput(Input& input,Renderer& renderer) {
 	if (isDown(BUTTON_CTRL)) {
 		renderer.camera.position.y -= 1;
 	}
+	if(isDown(BUTTON_ESC)){
+		renderer.renderWindow->close();
+	}
 	return;
 }
 void init() {
@@ -32,7 +35,7 @@ void update(Input* input, Renderer& renderer) {
 		Vector{0.f,0.f,6.f} 
 	};
 	Triangle t(p, Vector{ 0,0,-1 }, Colour{ 255,255,255 }, -1.f, 0.f);
-
+	
 	for (int i = 0; i < 3; i++) {
 		t.p[i] = t.p[i] - renderer.camera.position;
 	}

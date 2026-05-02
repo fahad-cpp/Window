@@ -19,6 +19,7 @@ public:
 	virtual void addConsole() const = 0;
 	virtual void removeConsole() const = 0;
 	virtual bool isOpen() const = 0;
+	virtual void close() = 0;
 	virtual inline RenderState* getRenderState() { return  &renderState; }
 	virtual inline Input* getInput() { return &input; }
 };
@@ -35,6 +36,7 @@ public:
 	inline void addConsole() const { impl->addConsole(); };
 	inline void removeConsole() const { impl->removeConsole(); };
 	inline bool isOpen() const { return impl->isOpen(); };
+	inline void close() { return impl->close(); };
 	inline RenderState* getRenderState() { return impl->getRenderState(); };
 	inline Input* getInput() { return impl->getInput(); }
 };

@@ -38,10 +38,11 @@ XlibWindow::XlibWindow(const char* name, unsigned int width, unsigned int height
 XlibWindow::~XlibWindow(){
     std::cout << "Xlib Window Destroyed\n";
     XDestroyImage(mBackImage);
-    XDestroyWindow(mDisplay,mWindowHandle);
+    if(isOpen())XDestroyWindow(mDisplay,mWindowHandle);
     XCloseDisplay(mDisplay);
 }
 void XlibWindow::swapBuffers(){
+    if(!isOpen())return;
     for(int y=0;y<renderState.height;y++){
         for(int x=0;x<renderState.width;x++){
             uint32_t index = ((renderState.width * y) + x);
