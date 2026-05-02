@@ -20,6 +20,7 @@ public:
 	void processMessages() override;
 	void addConsole() const override;
 	void removeConsole() const override;
-	bool isOpen() const override { return IsWindow(mWindowHandle); }
+	bool isOpen() const override { return IsWindow(mWindowHandle);}
+	void close() override;
 };
 #endif

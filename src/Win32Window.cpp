@@ -37,8 +37,9 @@ Win32Window::Win32Window(const char* name, unsigned int width, unsigned int heig
 
 }
 Win32Window::~Win32Window() {
-	ReleaseDC(mWindowHandle, mDeviceContextHandle);
-	DestroyWindow(mWindowHandle);
+	if(isOpen())close();
+	if(renderState.screenBuffer)VirtualFree(renderState.screenBuffer,0,MEM_RELEASE);
+	if(renderState.depthBuffer)VirtualFree(renderState.depthBuffer,0,MEM_RELEASE);
 }
 
 
@@ -192,5 +193,11 @@ void Win32Window::addConsole() const
 void Win32Window::removeConsole() const {
 	FreeConsole();
 	std::fclose(stdout);
+}
+
+void Win32Window::close(){
+	ReleaseDC(mWindowHandle, mDeviceContextHandle);
+	DestroyWindow(mWindowHandle);
+	mWindowHandle=(HWND)NULL;
 }
 #endif
