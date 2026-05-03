@@ -1,4 +1,6 @@
-#pragma once
+#ifndef HASH_H
+#define HASH_H
+
 #include <algorithm>
 #include "Scene.h"
 template<typename T>
@@ -15,3 +17,4 @@ template<>
 struct std::hash<Sphere> {
 	std::size_t operator()(const Sphere& sphere) const;
 };
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FSWIN32
+#define FSWIN32
 #ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
@@ -22,4 +23,5 @@ public:
 	bool isOpen() const override { return IsWindow(mWindowHandle); }
 	void close() override;
 };
+#endif
 #endif

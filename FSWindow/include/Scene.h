@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SCENE_H
+#define SCENE_H
 #include "Vector.h"
 #include <vector>
 #define infinity 2000000000
@@ -89,3 +90,4 @@ struct Scene {
 	;
 
 };
+#endif

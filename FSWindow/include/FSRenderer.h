@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FSRENDERER
+#define FSRENDERER
 #include <cmath>
 #include "FSWindow.h"
 #include "Scene.h"
@@ -44,3 +45,4 @@ template<typename T>
 bool isIn(T value, T lower, T higher);
 Vector rotate(const Vector& vec, const Vector& rotationP, RotateOrder ro = RotateOrder::RO_YXZ, bool cached = false);
 Vector transformVertex(Vector vec, const Transform& tf, RotateOrder ro = RotateOrder::RO_YXZ);
+#endif

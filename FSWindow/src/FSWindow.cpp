@@ -16,7 +16,7 @@ FSWindow::FSWindow(const char* name, unsigned int width, unsigned int height) {
 }
 
 FSWindow::~FSWindow() {
-	//impl->removeConsole();
+	impl->removeConsole();
 #ifdef _WIN32
 	delete (Win32Window*)impl;
 #elif __linux__

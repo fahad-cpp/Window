@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FSWINDOW
+#define FSWINDOW
 #include <iostream>
 #include <string>
 #include "Input.h"
@@ -40,3 +41,4 @@ public:
 	inline RenderState* getRenderState() { return impl->getRenderState(); };
 	inline Input* getInput() { return impl->getInput(); }
 };
+#endif

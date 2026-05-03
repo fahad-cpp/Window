@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUT_H
+#define INPUT_H
 enum Buttons {
 	BUTTON_SHIFT,
 	BUTTON_CTRL,
@@ -47,3 +48,4 @@ struct Input {
 	ButtonState buttons[BUTTON_COUNT];
 };
 #define isDown(x) input.buttons[x].isDown
+#endif

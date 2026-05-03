@@ -1,3 +1,5 @@
+#ifndef FSLINUX
+#define FSLINUX
 #ifdef __linux__
 #include "FSWindow.h"
 #include <X11/Xlib.h>
@@ -24,4 +26,5 @@ public:
 	bool isOpen() const override { return mWindowHandle; }
 	void close() override { XDestroyWindow(mDisplay, mWindowHandle);mWindowHandle = (Window)NULL; }
 };
+#endif
 #endif

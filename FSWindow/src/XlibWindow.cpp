@@ -118,16 +118,16 @@ void XlibWindow::processMessages() {
                     process_message(BUTTON_Y, XK_Y)
                     process_message(BUTTON_Z, XK_z)
                     process_message(BUTTON_Z, XK_Z)
-                    process_message(BUTTON_LEFT, XK_Left);
-                process_message(BUTTON_RIGHT, XK_Right);
-                process_message(BUTTON_UP, XK_Up);
-                process_message(BUTTON_DOWN, XK_Down);
-                process_message(BUTTON_ESC, XK_Escape);
-                process_message(BUTTON_SHIFT, XK_Shift_L);
-                process_message(BUTTON_SHIFT, XK_Shift_R);
-                process_message(BUTTON_CTRL, XK_Control_L);
-                process_message(BUTTON_CTRL, XK_Control_R);
-                process_message(BUTTON_SPACE, XK_space);
+                    process_message(BUTTON_LEFT, XK_Left)
+                    process_message(BUTTON_RIGHT, XK_Right)
+                    process_message(BUTTON_UP, XK_Up)
+                    process_message(BUTTON_DOWN, XK_Down)
+                    process_message(BUTTON_ESC, XK_Escape)
+                    process_message(BUTTON_SHIFT, XK_Shift_L)
+                    process_message(BUTTON_SHIFT, XK_Shift_R)
+                    process_message(BUTTON_CTRL, XK_Control_L)
+                    process_message(BUTTON_CTRL, XK_Control_R)
+                    process_message(BUTTON_SPACE, XK_space)
             }
         }
     }

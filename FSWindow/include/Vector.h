@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTOR_H
+#define VECTOR_H
 struct Vector {
 	float x;
 	float y;
@@ -26,3 +27,4 @@ struct Vector {
 	friend float dot(const Vector&, const Vector&);
 	friend float length(const Vector&);
 };
+#endif
