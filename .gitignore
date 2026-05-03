@@ -3,6 +3,7 @@ int
 lib
 build
 *.vs
+*.vscode
 *.sln
 *.vcxproj
 *.filters
