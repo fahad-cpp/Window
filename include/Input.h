@@ -39,11 +39,11 @@ enum Buttons {
 	BUTTON_COUNT
 };
 
-struct Button_state {
+struct ButtonState {
 	bool isDown;
 	bool changed;
 };
 struct Input {
-	Button_state buttons[BUTTON_COUNT];
+	ButtonState buttons[BUTTON_COUNT];
 };
 #define isDown(x) input.buttons[x].isDown

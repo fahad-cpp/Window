@@ -1,4 +1,4 @@
-#include "Renderer.h"
+#include "FSRenderer.h"
 template<typename T>
 void swap(T& a, T& b) {
 	T c;
@@ -98,12 +98,12 @@ Vector rotate(const Vector& vec, const Vector& rotationP, RotateOrder ro, bool c
 Vector transformVertex(Vector vec, const Transform& tf, RotateOrder ro) {
 	return ((rotate(vec, tf.rotation, ro) * tf.scale) + tf.position);
 }
-void Renderer::putPixelD(int x, int y, Colour color) {
+void FSRenderer::putPixelD(int x, int y, Colour color) {
 	u32 hexColor = rgbtoHex(color);
 	u32* pixel = (u32*)renderWindow->getRenderState()->screenBuffer + x + (y * renderWindow->getRenderState()->width);
 	*pixel = hexColor;
 }
-void Renderer::putPixel(int x, int y, Colour color) {
+void FSRenderer::putPixel(int x, int y, Colour color) {
 	RenderState* _renderState = renderWindow->getRenderState();
 	u32 hexColor = rgbtoHex(color);
 	x += _renderState->width / 2;
@@ -112,7 +112,7 @@ void Renderer::putPixel(int x, int y, Colour color) {
 	u32* pixel = (u32*)_renderState->screenBuffer + x + (y * _renderState->width);
 	*pixel = hexColor;
 }
-void Renderer::clear(u32 color) {
+void FSRenderer::clear(u32 color) {
 	u32* buffer = (u32*)renderWindow->getRenderState()->screenBuffer;
 	float* dep = renderWindow->getRenderState()->depthBuffer;
 	for (int y = 0; y < renderWindow->getRenderState()->height; y++) {
@@ -122,7 +122,7 @@ void Renderer::clear(u32 color) {
 		}
 	}
 }
-void Renderer::clear(Colour color) {
+void FSRenderer::clear(Colour color) {
 	u32 hexColor = rgbtoHex(color);
 	u32* buffer = (u32*)renderWindow->getRenderState()->screenBuffer;
 	float* dep = renderWindow->getRenderState()->depthBuffer;
@@ -133,7 +133,7 @@ void Renderer::clear(Colour color) {
 		}
 	}
 }
-void Renderer::drawLine(Vector a, Vector b, Colour color) {
+void FSRenderer::drawLine(Vector a, Vector b, Colour color) {
 	float dy = b.y - a.y;
 	float dx = b.x - a.x;
 	if (abs(dx) > abs(dy)) {
@@ -173,18 +173,18 @@ void Renderer::drawLine(Vector a, Vector b, Colour color) {
 		}
 	}
 }
-Vector Renderer::canvasToViewport(float x, float y) {
+Vector FSRenderer::canvasToViewport(float x, float y) {
 	return { x * (viewPort.x / canvas.x), y * (viewPort.y / canvas.y), d };
 }
-std::pair<float, float> Renderer::viewportToCanvas(float x, float y) {
+std::pair<float, float> FSRenderer::viewportToCanvas(float x, float y) {
 	return { x * (canvas.x / viewPort.x) ,y * (canvas.y / viewPort.y) };
 }
-Vector Renderer::projectVertex(Vector v) {
+Vector FSRenderer::projectVertex(Vector v) {
 	//Perspective Projection
 	std::pair<float, float> result = viewportToCanvas(float((v.x * d) / v.z), float((v.y * d) / v.z));
 	return { result.first,result.second ,d };
 }
-void Renderer::interpolate(float x0, float y0, float x1, float y1, std::vector<float>& arr) {
+void FSRenderer::interpolate(float x0, float y0, float x1, float y1, std::vector<float>& arr) {
 	float dx = x1 - x0;
 	float dy = y1 - y0;
 	float aspectratio = (dy != 0) ? (dx / dy) : 0;
@@ -199,8 +199,7 @@ void Renderer::interpolate(float x0, float y0, float x1, float y1, std::vector<f
 }
 
 //Expects triangle to be in camera space
-void Renderer::drawTriangle(Triangle& t, bool wireframe)
-{
+void FSRenderer::drawTriangle(Triangle& t, bool wireframe) {
 	Vector p1 = projectVertex(t.p[0]);
 	Vector p2 = projectVertex(t.p[1]);
 	Vector p3 = projectVertex(t.p[2]);

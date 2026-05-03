@@ -4,8 +4,7 @@
 #include <Windows.h>
 #include "FSWindow.h"
 //WIN32 window
-class Win32Window : public BaseWindow
-{
+class Win32Window : public BaseWindow {
 private:
 	HWND mWindowHandle;
 	HDC mDeviceContextHandle;
@@ -20,7 +19,7 @@ public:
 	void processMessages() override;
 	void addConsole() const override;
 	void removeConsole() const override;
-	bool isOpen() const override { return IsWindow(mWindowHandle);}
+	bool isOpen() const override { return IsWindow(mWindowHandle); }
 	void close() override;
 };
 #endif

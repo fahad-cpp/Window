@@ -14,7 +14,7 @@ Colour::Colour(unsigned char R, unsigned char G, unsigned char B) {
 	this->B = B;
 }
 
-bool Colour::operator==(const Colour& op)const{
+bool Colour::operator==(const Colour& op)const {
 	return (this->R == op.R && this->G == op.G && this->B == op.B);
 }
 Colour Colour::operator*(const float num) {
@@ -47,8 +47,7 @@ float Colour::luminance() {
 	return ((0.2126f * float(R)) + (0.7152f * float(G)) + (0.0722f * float(B)));
 }
 
-u32 getHex(const Colour& RGB)
-{
+u32 getHex(const Colour& RGB) {
 	return u32((RGB.R << 16) | (RGB.G << 8) | RGB.B);
 }
 Colour hexToRGB(u32 hex) {
@@ -70,15 +69,12 @@ Sphere::Sphere(Vector center, float radius, Colour color) {
 	this->color = color;
 }
 
-Type Triangle::getType()
-{
+Type Triangle::getType() {
 	return Type::ST_TRIANGLE;
 }
-Vector Triangle::getNormal()
-{
+Vector Triangle::getNormal() {
 	//anti clockwise
-	if (normal == Vector{ 0, 0, 0 })
-	{
+	if (normal == Vector{ 0, 0, 0 }) {
 		normal = cross((p[1] - p[0]), (p[2] - p[0]));
 		return normal;
 	}

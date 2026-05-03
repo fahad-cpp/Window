@@ -10,7 +10,7 @@ struct RenderState {
 	void* screenBuffer;
 	float* depthBuffer;
 };
-class BaseWindow{
+class BaseWindow {
 public:
 	RenderState renderState;
 	Input input;

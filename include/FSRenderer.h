@@ -3,7 +3,7 @@
 #include "FSWindow.h"
 #include "Scene.h"
 //CPU renderer
-struct Renderer {
+struct FSRenderer {
 	FSWindow* renderWindow;
 	Transform camera;
 	Vector viewPort;
@@ -11,12 +11,12 @@ struct Renderer {
 	RenderState* renderState;
 	//distance between camera position and viewport
 	float d;
-	Renderer(FSWindow* window) {
+	FSRenderer(FSWindow* window) {
 		renderState = window->getRenderState();
 		renderWindow = window;
 		d = 1.f;
 		camera = { {0,0,-5},1,{0,0,0} };
-		canvas = {(float)renderState->width,(float)renderState->height};
+		canvas = { (float)renderState->width,(float)renderState->height };
 		float aspectratio = float(renderState->width) / float(renderState->height);
 		viewPort.x = aspectratio;
 		viewPort.y = 1;
@@ -37,7 +37,7 @@ enum class RotateOrder {
 	RO_XYZ
 };
 template<typename T>
-void swap(T&,T&);
+void swap(T&, T&);
 template<typename T>
 void clamp(T& num, T min_limit, T max_limit);
 template<typename T>

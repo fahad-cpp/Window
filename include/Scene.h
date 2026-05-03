@@ -25,8 +25,7 @@ Colour hexToRGB(u32 hex);
 u32 rgbtoHex(Colour RGB);
 
 //Objects
-enum class Type
-{
+enum class Type {
 	ST_BASE = 0,
 	ST_SPHERE,
 	ST_TRIANGLE
@@ -35,12 +34,11 @@ struct Object {
 	Colour color;
 	float specular;
 	float reflectiveness;
-	virtual Type getType()
-	{
+	virtual Type getType() {
 		return Type::ST_BASE;
 	}
 };
-struct Sphere : Object{
+struct Sphere : Object {
 	Vector center;
 	float radius;
 	Sphere(Vector center = {}, float radius = 1.f, Colour color = {});
@@ -59,7 +57,7 @@ struct Triangle : Object {
 		reflectiveness = 0;
 		specular = -1;
 	}
-	Triangle(const Vector p[3],const Vector normal = { 0,0,0 },const Colour color = { 0,0,0 },const float specular = -1,const float reflectiveness = 0) {
+	Triangle(const Vector p[3], const Vector normal = { 0,0,0 }, const Colour color = { 0,0,0 }, const float specular = -1, const float reflectiveness = 0) {
 		this->p[0] = p[0];
 		this->p[1] = p[1];
 		this->p[2] = p[2];
@@ -87,6 +85,7 @@ struct Transform {
 	}
 };
 //Scene
-struct Scene {;
+struct Scene {
+	;
 
 };

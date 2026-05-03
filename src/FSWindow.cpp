@@ -6,18 +6,20 @@
 #endif
 
 
-FSWindow::FSWindow(const char* name,unsigned int width, unsigned int height){
+FSWindow::FSWindow(const char* name, unsigned int width, unsigned int height) {
 #ifdef _WIN32
 	impl = new Win32Window(name, width, height);
 #elif __linux__
-	impl = new XlibWindow(name,width,height);
+	impl = new XlibWindow(name, width, height);
 #endif
+	impl->addConsole();
 }
 
 FSWindow::~FSWindow() {
-	#ifdef _WIN32
-		delete (Win32Window*)impl;
-	#elif __linux__
-		delete (XlibWindow*)impl;
-	#endif
+	//impl->removeConsole();
+#ifdef _WIN32
+	delete (Win32Window*)impl;
+#elif __linux__
+	delete (XlibWindow*)impl;
+#endif
 }

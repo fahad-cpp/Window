@@ -4,14 +4,13 @@
 #include <X11/Xutil.h>
 #include <stdint.h>
 #include "Input.h"
-class XlibWindow : public BaseWindow
-{
+class XlibWindow : public BaseWindow {
 private:
 	Window mWindowHandle;
 	Display* mDisplay;
 	int	mScreen;
 	GC mGc;
-	XImage* mBackImage=nullptr;
+	XImage* mBackImage = nullptr;
 
 	inline void setNative(Window window) { mWindowHandle = window; }
 	inline Window getNative() const { return mWindowHandle; }
@@ -23,6 +22,6 @@ public:
 	void addConsole() const override;
 	void removeConsole() const override;
 	bool isOpen() const override { return mWindowHandle; }
-	void close() override { XDestroyWindow(mDisplay,mWindowHandle);mWindowHandle = (Window)NULL; }
+	void close() override { XDestroyWindow(mDisplay, mWindowHandle);mWindowHandle = (Window)NULL; }
 };
 #endif
