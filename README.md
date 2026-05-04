@@ -8,7 +8,7 @@ git submodule add https://github.com/fahad-cpp/FSWindow vendor/FSWindow
 ```
 add in cmake as subdirectory and link to project
 ```cmake
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.30)
 
 project(MyProj)
 

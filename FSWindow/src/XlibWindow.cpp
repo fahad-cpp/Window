@@ -133,7 +133,7 @@ void XlibWindow::processMessages() {
     }
 };
 void XlibWindow::addConsole() const {
-    std::freopen("CONOUT$", "w", stdout);
+    std::freopen("/dev/tty", "w", stdout);
 };
 void XlibWindow::removeConsole() const {
     std::fclose(stdout);
